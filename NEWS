@@ -1,0 +1,7 @@
+libtest-tcp-perl (2.00-1) unstable; urgency=low
+
+  [INCOMPATIBLE CHANGES]
+  - Change wait_port() API to take max_wait seconds, and wait exponentially.
+    Dropped wait_port_retry argument introduced at 1.27. (miyagawa)
+
+ -- gregor herrmann <gregoa@debian.org>  Wed, 24 Jul 2013 19:49:25 +0200
