@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-TCP
 Version  : 2.19
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-tcp-perl/libtest-tcp-perl_2.19-1.debian.tar.xz
@@ -91,9 +91,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Net/EmptyPort.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Test/TCP.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Test/TCP/CheckPort.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Net/EmptyPort.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/TCP.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/TCP/CheckPort.pm
 
 %files dev
 %defattr(-,root,root,-)
