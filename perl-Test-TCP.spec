@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-TCP
 Version  : 2.19
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-tcp-perl/libtest-tcp-perl_2.19-1.debian.tar.xz
