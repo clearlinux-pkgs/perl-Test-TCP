@@ -4,14 +4,13 @@
 #
 Name     : perl-Test-TCP
 Version  : 2.19
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-tcp-perl/libtest-tcp-perl_2.19-1.debian.tar.xz
-Summary  : 'testing TCP program'
+Summary  : testing TCP program
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-Test-TCP-license = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::SharedFork)
 
@@ -30,29 +29,12 @@ my $socket = shift;
 my $client = MyClient->new(host => '127.0.0.1', port => $server->port);
 undef $server; # kill child process on DESTROY
 
-%package dev
-Summary: dev components for the perl-Test-TCP package.
-Group: Development
-Provides: perl-Test-TCP-devel = %{version}-%{release}
-
-%description dev
-dev components for the perl-Test-TCP package.
-
-
-%package license
-Summary: license components for the perl-Test-TCP package.
-Group: Default
-
-%description license
-license components for the perl-Test-TCP package.
-
-
 %prep
 %setup -q -n Test-TCP-2.19
 cd ..
 %setup -q -T -D -n Test-TCP-2.19 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Test-TCP-2.19/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Test-TCP-2.19/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -91,17 +73,3 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Net/EmptyPort.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Test/TCP.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Test/TCP/CheckPort.pm
-
-%files dev
-%defattr(-,root,root,-)
-/usr/share/man/man3/Net::EmptyPort.3
-/usr/share/man/man3/Test::TCP.3
-/usr/share/man/man3/Test::TCP::CheckPort.3
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Test-TCP/LICENSE
-/usr/share/package-licenses/perl-Test-TCP/deblicense_copyright
