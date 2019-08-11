@@ -4,11 +4,11 @@
 #
 Name     : perl-Test-TCP
 Version  : 2.20
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.20.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-tcp-perl/libtest-tcp-perl_2.19-1.debian.tar.xz
-Summary  : testing TCP program
+Summary  : 'testing TCP program'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Test-TCP-license = %{version}-%{release}
@@ -34,7 +34,6 @@ undef $server; # kill child process on DESTROY
 Summary: dev components for the perl-Test-TCP package.
 Group: Development
 Provides: perl-Test-TCP-devel = %{version}-%{release}
-Requires: perl-Test-TCP = %{version}-%{release}
 Requires: perl-Test-TCP = %{version}-%{release}
 
 %description dev
