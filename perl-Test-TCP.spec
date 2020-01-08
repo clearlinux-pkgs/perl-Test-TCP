@@ -4,14 +4,15 @@
 #
 Name     : perl-Test-TCP
 Version  : 2.22
-Release  : 16
+Release  : 17
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.22.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.22.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-tcp-perl/libtest-tcp-perl_2.19-1.debian.tar.xz
-Summary  : testing TCP program
+Summary  : 'testing TCP program'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Test-TCP-license = %{version}-%{release}
+Requires: perl-Test-TCP-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Test::SharedFork)
 
@@ -35,7 +36,6 @@ Summary: dev components for the perl-Test-TCP package.
 Group: Development
 Provides: perl-Test-TCP-devel = %{version}-%{release}
 Requires: perl-Test-TCP = %{version}-%{release}
-Requires: perl-Test-TCP = %{version}-%{release}
 
 %description dev
 dev components for the perl-Test-TCP package.
@@ -49,12 +49,22 @@ Group: Default
 license components for the perl-Test-TCP package.
 
 
+%package perl
+Summary: perl components for the perl-Test-TCP package.
+Group: Default
+Requires: perl-Test-TCP = %{version}-%{release}
+
+%description perl
+perl components for the perl-Test-TCP package.
+
+
 %prep
 %setup -q -n Test-TCP-2.22
-cd ..
-%setup -q -T -D -n Test-TCP-2.22 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libtest-tcp-perl_2.19-1.debian.tar.xz
+cd %{_builddir}/Test-TCP-2.22
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Test-TCP-2.22/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Test-TCP-2.22/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -79,8 +89,8 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Test-TCP
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-TCP/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-TCP/deblicense_copyright
+cp %{_builddir}/Test-TCP-2.22/LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-TCP/e32922cc01823ebfc593b2b733ee5cc1a7ae405c
+cp %{_builddir}/Test-TCP-2.22/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-TCP/b2a6ad1cc91a081c098bc71b38696e2bf4883e42
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -93,9 +103,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Net/EmptyPort.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Test/TCP.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Test/TCP/CheckPort.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -105,5 +112,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Test-TCP/LICENSE
-/usr/share/package-licenses/perl-Test-TCP/deblicense_copyright
+/usr/share/package-licenses/perl-Test-TCP/b2a6ad1cc91a081c098bc71b38696e2bf4883e42
+/usr/share/package-licenses/perl-Test-TCP/e32922cc01823ebfc593b2b733ee5cc1a7ae405c
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Net/EmptyPort.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Test/TCP.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Test/TCP/CheckPort.pm
