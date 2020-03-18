@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-TCP
 Version  : 2.22
-Release  : 17
+Release  : 18
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.22.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.22.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-tcp-perl/libtest-tcp-perl_2.19-1.debian.tar.xz
@@ -90,7 +90,7 @@ make TEST_VERBOSE=1 test
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Test-TCP
 cp %{_builddir}/Test-TCP-2.22/LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-TCP/e32922cc01823ebfc593b2b733ee5cc1a7ae405c
-cp %{_builddir}/Test-TCP-2.22/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-TCP/b2a6ad1cc91a081c098bc71b38696e2bf4883e42
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Test-TCP/b2a6ad1cc91a081c098bc71b38696e2bf4883e42
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -117,6 +117,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Net/EmptyPort.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Test/TCP.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Test/TCP/CheckPort.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Net/EmptyPort.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Test/TCP.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Test/TCP/CheckPort.pm
